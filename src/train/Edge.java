@@ -8,12 +8,41 @@ package train;
  */
 public class Edge {
     // 边的起始节点
-    private Vertext startVertext;
+    private Vertex startVertex;
 
     // 边的结束节点
-    private Vertext endVertext;
+    private Vertex endVertex;
 
     // 边的权重  可以理解为从start到end的距离
-    private int weights;
+    private Integer weights;
 
+    public Edge(Vertex startVertex, Vertex endVertex, Integer weights) {
+        this.startVertex = startVertex;
+        this.endVertex = endVertex;
+        this.weights = weights;
+    }
+
+    public Vertex getStartVertex() {
+        return startVertex;
+    }
+
+    public void setStartVertex(Vertex startVertex) {
+        this.startVertex = startVertex;
+    }
+
+    public Vertex getEndVertex() {
+        return endVertex;
+    }
+
+    public void setEndVertex(Vertex endVertex) {
+        this.endVertex = endVertex;
+    }
+
+    public Integer getWeights() {
+        return weights;
+    }
+
+    public void setWeights(Integer weights) {
+        this.weights = weights;
+    }
 }

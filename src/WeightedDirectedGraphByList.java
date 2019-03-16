@@ -138,7 +138,7 @@ public class WeightedDirectedGraphByList {
         @Override
         public boolean equals(Object obj) {
             if (!(obj instanceof Vertex)) {
-                throw new ClassCastException("an object to compare with a Vertext must be Vertex");
+                throw new ClassCastException("an object to compare with a Vertex must be Vertex");
             }
 
             if (this.name == null) {

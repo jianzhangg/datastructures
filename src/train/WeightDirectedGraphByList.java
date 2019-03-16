@@ -12,13 +12,29 @@ import java.util.Map;
 public class WeightDirectedGraphByList {
 
     // 图中的所有顶点数组
-    private List<Vertext> vertextList;
+    private List<Vertex> vertexList;
 
     // 每个节点拥有的边的信息
-    private Map<Vertext,Edge> vertextEdgeMap;
+    private Map<Vertex,List<Edge>> vertexEdgeMap;
 
-    public WeightDirectedGraphByList(List<Vertext> vertextList, Map<Vertext, Edge> vertextEdgeMap) {
-        this.vertextList = vertextList;
-        this.vertextEdgeMap = vertextEdgeMap;
+    public WeightDirectedGraphByList(List<Vertex> vertexList, Map<Vertex, List<Edge>> vertexEdgeMap) {
+        this.vertexList = vertexList;
+        this.vertexEdgeMap = vertexEdgeMap;
+    }
+
+    public List<Vertex> getVertexList() {
+        return vertexList;
+    }
+
+    public void setVertexList(List<Vertex> vertexList) {
+        this.vertexList = vertexList;
+    }
+
+    public Map<Vertex, List<Edge>> getVertexEdgeMap() {
+        return vertexEdgeMap;
+    }
+
+    public void setVertexEdgeMap(Map<Vertex, List<Edge>> vertexEdgeMap) {
+        this.vertexEdgeMap = vertexEdgeMap;
     }
 }
