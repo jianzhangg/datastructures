@@ -1,7 +1,9 @@
 package train;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author: jian.zhangg
@@ -15,11 +17,17 @@ public class WeightDirectedGraphByList {
     private List<Vertex> vertexList;
 
     // 每个节点拥有的边的信息
-    private Map<Vertex,List<Edge>> vertexEdgeMap;
+    private Map<Vertex, List<Edge>> vertexEdgeMap;
 
     public WeightDirectedGraphByList(List<Vertex> vertexList, Map<Vertex, List<Edge>> vertexEdgeMap) {
         this.vertexList = vertexList;
         this.vertexEdgeMap = vertexEdgeMap;
+    }
+
+    public WeightDirectedGraphByList(List<Edge> edges) {
+        this.vertexEdgeMap = edges.stream()
+                .collect(Collectors.groupingBy(Edge::getStartVertex));
+        this.vertexList = new ArrayList<>(vertexEdgeMap.keySet());
     }
 
     public List<Vertex> getVertexList() {

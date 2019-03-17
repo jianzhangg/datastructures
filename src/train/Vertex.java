@@ -1,5 +1,7 @@
 package train;
 
+import java.util.Objects;
+
 /**
  * @author: jian.zhangg
  * @date: 19-3-16 上午8:32
@@ -36,5 +38,18 @@ public class Vertex {
 
     public void setRoute(Route route) {
         this.route = route;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vertex vertex = (Vertex) o;
+        return Objects.equals(name, vertex.name) ;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, route);
     }
 }

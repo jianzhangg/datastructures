@@ -1,5 +1,7 @@
 package train;
 
+import java.util.Objects;
+
 /**
  * @author: jian.zhangg
  * @date: 19-3-16 上午8:40
@@ -44,5 +46,20 @@ public class Edge {
 
     public void setWeights(Integer weights) {
         this.weights = weights;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Edge edge = (Edge) o;
+        return Objects.equals(startVertex, edge.startVertex) &&
+                Objects.equals(endVertex, edge.endVertex) &&
+                Objects.equals(weights, edge.weights);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(startVertex, endVertex, weights);
     }
 }

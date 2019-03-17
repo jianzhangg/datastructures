@@ -17,7 +17,7 @@ public class Route {
     private String road;
 
     // 路途的总距离
-    private Integer distance = DijkstraAlgorithm.MAX;
+    private Integer distance = Algorithm.MAX;
 
     public List<Edge> getEdges() {
         return edges;
