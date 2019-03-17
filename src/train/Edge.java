@@ -24,6 +24,11 @@ public class Edge {
         this.weights = weights;
     }
 
+    public Edge(Vertex startVertex, Vertex endVertex) {
+        this.startVertex = startVertex;
+        this.endVertex = endVertex;
+    }
+
     public Vertex getStartVertex() {
         return startVertex;
     }
