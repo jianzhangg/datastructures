@@ -16,9 +16,6 @@ public class Algorithm {
     // 用于存放已访问过的顶点
     private HashSet<Vertex> visitedVertex = new HashSet<>();
 
-    // 用于存放已访问过的边
-    private HashSet<Edge> visitedEdge = new HashSet<>();
-
     // 用于存放所有两点间的路程
     private List<Route> routes = new ArrayList<>();
 
@@ -74,14 +71,16 @@ public class Algorithm {
      */
     public List<Route> getAllRoutes(Vertex startVertex, Vertex endVertex, WeightDirectedGraphByList graph) {
         graph.getVertexEdgeMap().get(startVertex).forEach(edge -> {
-            Stack<Edge> visitedVertex = new Stack<>();
-            visitedVertex.push(edge);
-            getAllRoutes(endVertex, visitedVertex, graph);
+            Stack<Edge> routeStack = new Stack<>();
+            HashSet<Edge> visitedEdge = new HashSet<>();
+            routeStack.push(edge);
+            visitedEdge.add(edge);
+            getAllRoutes(endVertex, routeStack, graph,visitedEdge);
         });
         return routes;
     }
 
-    private void getAllRoutes(Vertex endVertex, Stack<Edge> routeStack, WeightDirectedGraphByList graph) {
+    private void getAllRoutes(Vertex endVertex, Stack<Edge> routeStack, WeightDirectedGraphByList graph,HashSet<Edge> visitedEdge) {
         if (Objects.isNull(endVertex) || routeStack.isEmpty()) return;
 
         Edge lastPeek = routeStack.peek();
@@ -100,7 +99,9 @@ public class Algorithm {
                 // 后续节点不是end继续往下找
                 routeStack.push(edge);
                 visitedEdge.add(edge);
-                getAllRoutes(edge.getEndVertex(), routeStack, graph);
+                getAllRoutes(endVertex, routeStack, graph,visitedEdge);
+                visitedEdge.remove(edge);
+                routeStack.pop();
             }
         }
     }

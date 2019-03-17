@@ -61,7 +61,9 @@ public class Main {
         edges.add(AE7);
         WeightDirectedGraphByList weightDirectedGraphByList = new WeightDirectedGraphByList(edges);
 
-        List<Route> allRoutes = new Algorithm().getAllRoutes(A, C, weightDirectedGraphByList);
-        System.out.println(allRoutes.size());
+        List<Route> allRoutes = new Algorithm().getAllRoutes(B, B, weightDirectedGraphByList);
+        allRoutes.forEach(route -> {
+            System.out.println(route.getRoad());
+        });
     }
 }
